@@ -1,2 +1,2 @@
 # burger
-Full Stack Flex Weekly Assignement #13 (Node Express Handlebars)
+Full Stack Flex Weekly Assignment #13 (Node Express Handlebars)
