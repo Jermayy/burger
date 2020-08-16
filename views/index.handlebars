@@ -1,10 +1,13 @@
 {{!-- Code to render mysql data on --}}
 
+<div class="pageHead">
 <h1>Burgers!</h1>
+<img class="krabbyPatty" src="krabbypatty.jpg" alt="Picture of a Krabby Patty">
+</div>
 
 
-<container>
-  <div class="uneaten-burger">
+<container class="row burgerLists">
+  <div class="uneaten-burger col-md-6">
   <h2>Burgers that are not devoured!</h2>
 
   <ul>
@@ -33,7 +36,7 @@
 </container>
 
 
-
+<div class="addBurgerForm">
 <h2>Add a Burger</h2>
 <form class="create-form">
 
@@ -50,3 +53,4 @@
 
   <button type="submit">Add Burger</button>
 </form>
+</div>
