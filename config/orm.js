@@ -1,31 +1,31 @@
-const connection = require("./connection.js");
+const connection = require("../config/connection.js");
 
-const userInput = (num) => {
-    const userArray = [];
-
-    for (let i = 0; i < num; i++) {
-        userArray.push("?");
-
-        return userArray.toString();
-    }
-};
-
-const objToSQL = (obj) => {
+const printQuestionMarks = (num) => {
     const arr = [];
 
-    for (const key in obj) {
-        let value = obj[key];
+    for (let i = 0; i < num; i++) {
+        arr.push("?");
+    }
 
-        if (Object.hasOwnProperty.call(obj, key)) {
+    return arr.toString();
+};
+
+
+const objToSql = (ob) => {
+    const arr = [];
+    for (const key in ob) {
+        let value = ob[key];
+        if (Object.hasOwnProperty.call(ob, key)) {
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
-                value = "'" + value + "'"
+                value = "'" + value + "'";
             }
             arr.push(key + "=" + value);
         }
     }
-    return arr.toString();
-}
 
+
+    return arr.toString();
+};
 
 
 const orm = {
@@ -45,7 +45,7 @@ const orm = {
         queryString += cols.toString();
         queryString += ") ";
         queryString += "VALUES (";
-        queryString += userInput(vals.length);
+        queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
         console.log(queryString);
@@ -56,23 +56,26 @@ const orm = {
             }
 
             cb(result);
-
-
         });
     },
+    updateOne: (table, objColVals, condition, cb) => {
+        let queryString = "UPDATE " + table;
 
-    updateOne: (table, condition, cb) => {
-        let queryString = "DELETE FROM" + table;
+        queryString += " SET ";
+        queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
 
+        console.log(queryString);
         connection.query(queryString, (err, result) => {
             if (err) {
-                throw err
+                throw err;
             }
+
             cb(result);
         });
     }
 };
+
 
 module.exports = orm;
