@@ -11,6 +11,15 @@ body {
     text-align: center;
 }
 
+h1,
+h2 {
+    padding: 10px;
+    margin: 10px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: 700;
+    font-size: 70px;
+}
+
 .krabbyPatty {
     object-fit: cover;
     height: 200px;
@@ -19,9 +28,15 @@ body {
 }
 
 li {
+    list-style: none;
     padding: 5px;
     margin: 5px;
+    border-radius: 30px;
     background: #faebd7;
+}
+
+button {
+    border-radius: 10px;
 }
 
 .label {
@@ -36,4 +51,8 @@ li {
 
 .form-group {
     margin-bottom: 5px;
+}
+
+.addBurgerForm {
+    text-align: center;
 }
