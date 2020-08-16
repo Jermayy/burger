@@ -6,25 +6,17 @@ const burger = {
             cb(res);
         });
     },
+    // The variables cols and vals are arrays.
     insertOne: (cols, vals, cb) => {
         orm.insertOne("burgers", cols, vals, (res) => {
             cb(res);
         });
     },
-
     updateOne: (objColVals, condition, cb) => {
         orm.updateOne("burgers", objColVals, condition, (res) => {
             cb(res);
         });
-    },
-
-    deleteOne: (condition, cb) => {
-        orm.delete("burgers", condition, (res) => {
-            cb(res);
-        });
     }
-
-
 };
 
 module.exports = burger;
